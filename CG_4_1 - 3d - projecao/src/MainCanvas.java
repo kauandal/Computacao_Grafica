@@ -91,8 +91,6 @@ public class MainCanvas extends JPanel implements Runnable{
 	Mat4x4 projecao;
 	Mat4x4 modelview;
 
-	static final String PASTA_OBJ = "C:/Users/Micro/Downloads/obj_1";
-	static final String ARQ_CARRUAGEM = "C:/Users/Micro/Downloads/Horse_and_Carriage_v1_L3.123c01e3954a-0422-487a-a2c3-78024c987f11/13915_Horse_and_Carriage_v1_l3.obj";
 	
 	public MainCanvas() {
 		
@@ -284,8 +282,8 @@ public class MainCanvas extends JPanel implements Runnable{
 	private void criaCenario() {
 		criaPlano(-80, -100, 800, 600, 50, CHAO_Y);
 
-		listaDeTriangulos.addAll(LeitorObj.carregar(PASTA_OBJ + "/medieval house.obj", 200, 170, CHAO_Y, 200,  90)); // casa
-		listaDeTriangulos.addAll(LeitorObj.carregar(PASTA_OBJ + "/Bench_LowRes.obj",    90, 400, CHAO_Y, 200, -90)); // banco
+		listaDeTriangulos.addAll(LeitorObj.carregar("objs/casa.obj", 200, 170, CHAO_Y, 200,  90)); // casa
+		listaDeTriangulos.addAll(LeitorObj.carregar("objs/banco.obj",  90, 400, CHAO_Y, 200, -90)); // banco
 
 		// arvores
 		listaDeTriangulos.addAll(LeitorObj.carregar("arvore.obj", 110,  70, CHAO_Y, 345));
@@ -301,7 +299,7 @@ public class MainCanvas extends JPanel implements Runnable{
 		listaDeTriangulos.addAll(LeitorObj.carregar("espada_pedra.obj", 75, 310, CHAO_Y, 310));
 
 		// carruagem (arquivo com Z para cima)
-		listaDeTriangulos.addAll(LeitorObj.carregar(ARQ_CARRUAGEM, 260, 560, CHAO_Y, 420, -105 - 90, true));
+		listaDeTriangulos.addAll(LeitorObj.carregar("objs/carruagem.obj", 260, 560, CHAO_Y, 420, -105 - 90, true));
 	}
 
 	// chao em grade
