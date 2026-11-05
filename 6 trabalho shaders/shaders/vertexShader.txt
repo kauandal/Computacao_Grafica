@@ -1,0 +1,23 @@
+#version 330 core
+
+// VERTEX SHADER: roda na placa de video, uma vez para cada vertice.
+// E aqui que a INTERPOLACAO entre os frames do MD2 acontece.
+
+in vec3 poseA;   // att 0: posicao do vertice no frame atual
+in vec3 poseB;   // att 1: posicao do MESMO vertice no proximo frame
+in vec2 textuv;  // att 2: coordenada de textura
+
+uniform mat4 projection; // matriz de projecao (glFrustum / glOrtho)
+uniform mat4 view;       // matriz da camera (glRotatef + glTranslatef)
+uniform float t;         // de 0 a 1: quanto ja andou do frame A para o frame B
+
+out vec2 uv;
+
+void main(void){
+	// interpolacao: mix(a, b, t) = a + (b - a) * t
+	vec3 posicao = mix(poseA, poseB, t);
+
+	gl_Position = projection * view * vec4(posicao, 1.0);
+
+	uv = textuv;
+}

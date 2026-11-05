@@ -1,0 +1,14 @@
+#version 330 core
+
+// FRAGMENT SHADER: roda uma vez para cada pixel do triangulo.
+// So pega a cor da textura (skin) na coordenada uv.
+
+uniform sampler2D tex;
+
+in vec2 uv;
+
+out vec4 out_Color;
+
+void main(void){
+	out_Color = texture(tex, uv);
+}
